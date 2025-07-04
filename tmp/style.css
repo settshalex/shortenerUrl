@@ -1,0 +1,137 @@
+/* public/css/style.css */
+
+/* Theme variables */
+:root {
+    --primary: #3461ff;
+    --text-dark: #0b1a2a;
+    --gray: #cbd5e0;
+    --red: red;
+    --light-blue: #eef8ff;
+    --font: 'Segoe UI', Tahoma, sans-serif;
+}
+
+/* reset & globale */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: var(--font);
+    background: var(--light-blue);
+    color: var(--text-dark);
+}
+.container {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+/* navbar */
+header {
+    padding: 1rem 0;
+}
+.navbar {
+    display: flex;
+    justify-content: center;
+}
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+}
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-dark);
+    font-weight: 500;
+    transition: color .2s;
+}
+.nav-links a:hover {
+    color: var(--primary);
+}
+
+/* hero + card */
+.hero {
+    padding: 4rem 0 0;
+    position: relative;
+}
+.card {
+    position: relative;
+    background: #fff;
+    border-radius: 1rem;
+    padding: 3rem 2rem 1rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    overflow: hidden;
+}
+.card h1 {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+/* form */
+.shorten-form {
+    display: flex;
+    width: 100%;
+    gap: 0;
+}
+.shorten-form input {
+    flex: 1;
+    padding: 0 1rem;
+    height: 3.5rem;
+    border: 1px solid var(--gray);
+    border-right: none;
+    border-radius: 1.75rem 0 0 1.75rem;
+    font-size: 1rem;
+}
+.shorten-form button {
+    padding: 0 2rem;
+    background: var(--primary);
+    border: none;
+    border-radius: 0 1.75rem 1.75rem 0;
+    color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background .2s;
+}
+
+
+/* form */
+.extra-form {
+    display: flex;
+    width: 100%;
+    gap: 0;
+    padding-top: 10px;
+}
+.extra-form input {
+    flex: 1;
+    padding: 0 1rem;
+    height: 2.5rem;
+    border: 1px solid var(--gray);
+    border-right: none;
+    border-radius: 1.75rem 0 0 1.75rem;
+    font-size: 1rem;
+}
+
+td {
+    padding:10px;
+}
+
+th {
+    text-align: left;
+}
+
+.links {
+    padding: 2rem;
+}
+
+.links h2{
+    padding-bottom: 1rem;
+}
+
+.error {
+    font-style: italic;
+    color: var(--red);
+    font-weight: bold;
+    padding-left: 20px
+}

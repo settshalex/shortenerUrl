@@ -1,0 +1,372 @@
+
+<!DOCTYPE html>
+<html lang='it'>
+<head>
+  <meta charset='UTF-8'>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Shorten Your Link</title>
+
+</head>
+<style>
+  /* public/css/style.css */
+
+  /* Theme variables */
+  :root {
+    --primary: #3461ff;
+    --text-dark: #0b1a2a;
+    --gray: #cbd5e0;
+    --red: red;
+    --light-blue: #eef8ff;
+    --font: 'Segoe UI', Tahoma, sans-serif;
+  }
+
+  /* reset & globale */
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  body {
+    font-family: var(--font);
+    background: var(--light-blue);
+    color: var(--text-dark);
+  }
+  .container {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+
+  /* navbar */
+  header {
+    padding: 1rem 0;
+  }
+  .navbar {
+    display: flex;
+    justify-content: center;
+  }
+  .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+  }
+  .nav-links a {
+    text-decoration: none;
+    color: var(--text-dark);
+    font-weight: 500;
+    transition: color .2s;
+  }
+  .nav-links a:hover {
+    color: var(--primary);
+  }
+
+  /* hero + card */
+  .hero {
+    padding: 4rem 0 0;
+    position: relative;
+  }
+  .card {
+    position: relative;
+    background: #fff;
+    border-radius: 1rem;
+    padding: 3rem 2rem 1rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    overflow: hidden;
+  }
+  .card h1 {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  /* form */
+  .shorten-form {
+    display: flex;
+    width: 100%;
+    gap: 0;
+  }
+  .shorten-form input {
+    flex: 1;
+    padding: 0 1rem;
+    height: 3.5rem;
+    border: 1px solid var(--gray);
+    border-right: none;
+    border-radius: 1.75rem 0 0 1.75rem;
+    font-size: 1rem;
+  }
+  .shorten-form button {
+    padding: 0 2rem;
+    background: var(--primary);
+    border: none;
+    border-radius: 0 1.75rem 1.75rem 0;
+    color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background .2s;
+  }
+
+
+  /* form */
+  .extra-form {
+    display: flex;
+    width: 100%;
+    gap: 0;
+    padding-top: 10px;
+  }
+  .extra-form input {
+    flex: 1;
+    padding: 0 1rem;
+    height: 2.5rem;
+    border: 1px solid var(--gray);
+    border-right: none;
+    border-radius: 1.75rem 0 0 1.75rem;
+    font-size: 1rem;
+  }
+
+  td {
+    padding:10px;
+  }
+
+  th {
+    text-align: left;
+  }
+
+  .links {
+    padding: 2rem;
+  }
+
+  .links h2{
+    padding-bottom: 1rem;
+  }
+
+  .error {
+    font-style: italic;
+    color: var(--red);
+    font-weight: bold;
+    padding-left: 20px
+  }
+
+  .flex-container{
+    display: flex;
+    flex-direction: row;
+  }
+  .links-container{
+    padding: 30px;
+    width: 50%;
+    box-sizing: border-box;
+    text-align: center;
+  }
+  .links-box{
+    box-shadow: 8px 5px 15px 5px #94DEFF;
+    padding: 23px;
+    box-sizing: border-box;
+  }
+  .links-box:hover{
+    box-shadow: 8px 5px 5px 5px #94DEFF;
+    padding: 23px;
+    box-sizing: border-box;
+  }
+  @media (max-width: 800px) {
+    .flex-container {
+      flex-direction: column;
+    }
+  }
+</style>
+<body>
+<header>
+  <nav class="navbar container">
+    <ul class="nav-links">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Contact</a></li>
+
+      <li>Hi arctgalex@gmail.com</li>
+      <li><a href="/logout">Logout</a></li>
+
+    </ul>
+  </nav>
+</header>
+
+<p class="error"></p>
+
+</body>
+</html>
+<section class="hero">
+  <div class="container">
+    <div class="card">
+      <h1>Shorten your link</h1>
+      <form  action="/shorten" method="post">
+        <div class="shorten-form">
+          <input type="url" name="originalUrl" placeholder="URL" required>
+          <button type="submit">Shorten</button>
+        </div>
+        <div class="extra-form">
+          <input type="text" name="customCode" placeholder="Custom Code">
+          <input type="datetime-local" name="expiresAt">
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+<section class="links">
+  <h2>Your links</h2>
+  <div class="flex-container">
+    <div class="links-container">
+      <div class="links-box" id="row-ukgtoAk1">
+        <p>Link: <a href="http://localhost:3030/short/ukgtoAk" target="_blank">ukgtoAk</a></p>
+        <p>Code: POOOO</p>
+        <p>Expire: 6/10/2025, 9:47:00 PM</p>
+        <p class="click-count">Clicks: 0</p>
+        <p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJQAAACUCAYAAAB1PADUAAAAAklEQVR4AewaftIAAAS7SURBVO3BQU4tSRAEwfDSu/+VfVjmqqRWJ3wYhRl+SdWSk6pFJ1WLTqoWnVQtOqladFK16KRq0UnVopOqRSdVi06qFp1ULTqpWnRSteikatEnLwH5SWomIDdqboBMam6A3Ki5AXKjZgLyk9S8cVK16KRq0UnVok+WqdkE5Ak1N0CeAHKj5gk1b6jZBGTTSdWik6pFJ1WLPvlmQJ5Q84SaCcik5kbNBGQTkEnNBGRS8wSQJ9R8p5OqRSdVi06qFn3yxwG5ATKpuVHzBpBJzQRkUvN/clK16KRq0UnVok/+ODU3QG6A3Kh5Qs0TQCY1f9lJ1aKTqkUnVYs++WZq/iU1N2pugExqNql5Q81vclK16KRq0UnVok+WAflJQCY1E5BJzQRkUvMEkEnNBGRSMwGZ1NwA+c1OqhadVC06qVr0yUtqfhMgk5oJyKRmAnIDZFIzAZnUvKHmLzmpWnRSteikahF+yQtAJjUTkBs1E5An1ExA/jI1E5BJzQ2QSc0E5EbNGydVi06qFp1ULfpkGZBJzQ2QSc0TQDapeQLIG2omIDdAbtTcqJmAbDqpWnRSteikatEnL6nZBOQJNd8JyKTmRs0EZFJzo2YCcqPmBsiNmk0nVYtOqhadVC365CUgk5oJyKRmUvMEkBsgk5ongPwlQG7U3ACZ1LxxUrXopGrRSdUi/JIXgNyouQEyqZmA3Kh5AsiNmhsgk5oJyKTmBsik5g0gN2q+00nVopOqRSdVi/BLXgDyhpoJyKTmBsh3UnMDZJOaCcik5g0gN2reOKladFK16KRq0ScvqbkBMql5Asik5kbNJiCTmknNBGRSMwGZ1ExAJjUTkEnNBORfOqladFK16KRqEX7JIiBvqHkCyBtqJiCTmhsgk5oJyKTmCSCTmgnIpOYGyKRm00nVopOqRSdViz75ZYD8JCCTmhsgk5pNQCY1E5Df7KRq0UnVopOqRZ8sU3MDZFIzAZnUPAFkUjMBuQEyqfnN1NwA+UknVYtOqhadVC365CUgk5o31ExAJjWb1HwnNTdANgG5UfOdTqoWnVQtOqlahF/yjYBMaiYgk5q/BMiNmgnIJjU3QCY13+mkatFJ1aKTqkWfLANyA2RSMwG5UTMBuVHzBJBJzY2aCchPAvKbnFQtOqladFK1CL/kDwMyqbkB8oaaCcgmNU8A2aTmjZOqRSdVi06qFn3yEpCfpOYGyBNqJiCTmifUTEDeADKpeULNBGRSs+mkatFJ1aKTqkWfLFOzCcgTaiYgk5oJyKTmBsik5jupeULNv3RSteikatFJ1aJPvhmQJ9Q8oWYCcgNkUnMD5Akgk5obIBOQTUB+0knVopOqRSdViz7544BMaiYgk5pNQG6ATGomNROQSc0E5AbIpOYGyKTmjZOqRSdVi06qFn3yPwNkUvOGmjeATEA2qZmA/EsnVYtOqhadVC365Jup+U5qJiATkEnNBGRSs0nNBORGzXcCMqnZdFK16KRq0UnVok+WAflJQCY1E5AJyKTmBsiNmhsgk5oJyBNqJiCTmn/ppGrRSdWik6pF+CVVS06qFp1ULTqpWnRSteikatFJ1aKTqkUnVYtOqhadVC06qVp0UrXopGrRSdWik6pF/wH1XSg7DwkUJgAAAABJRU5ErkJggg==" alt="QR ukgtoAk" width="80">
+          <a href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJQAAACUCAYAAAB1PADUAAAAAklEQVR4AewaftIAAAS7SURBVO3BQU4tSRAEwfDSu/+VfVjmqqRWJ3wYhRl+SdWSk6pFJ1WLTqoWnVQtOqladFK16KRq0UnVopOqRSdVi06qFp1ULTqpWnRSteikatEnLwH5SWomIDdqboBMam6A3Ki5AXKjZgLyk9S8cVK16KRq0UnVok+WqdkE5Ak1N0CeAHKj5gk1b6jZBGTTSdWik6pFJ1WLPvlmQJ5Q84SaCcik5kbNBGQTkEnNBGRS8wSQJ9R8p5OqRSdVi06qFn3yxwG5ATKpuVHzBpBJzQRkUvN/clK16KRq0UnVok/+ODU3QG6A3Kh5Qs0TQCY1f9lJ1aKTqkUnVYs++WZq/iU1N2pugExqNql5Q81vclK16KRq0UnVok+WAflJQCY1E5BJzQRkUvMEkEnNBGRSMwGZ1NwA+c1OqhadVC06qVr0yUtqfhMgk5oJyKRmAnIDZFIzAZnUvKHmLzmpWnRSteikahF+yQtAJjUTkBs1E5An1ExA/jI1E5BJzQ2QSc0E5EbNGydVi06qFp1ULfpkGZBJzQ2QSc0TQDapeQLIG2omIDdAbtTcqJmAbDqpWnRSteikatEnL6nZBOQJNd8JyKTmRs0EZFJzo2YCcqPmBsiNmk0nVYtOqhadVC365CUgk5oJyKRmUvMEkBsgk5ongPwlQG7U3ACZ1LxxUrXopGrRSdUi/JIXgNyouQEyqZmA3Kh5AsiNmhsgk5oJyKTmBsik5g0gN2q+00nVopOqRSdVi/BLXgDyhpoJyKTmBsh3UnMDZJOaCcik5g0gN2reOKladFK16KRq0ScvqbkBMql5Asik5kbNJiCTmknNBGRSMwGZ1ExAJjUTkEnNBORfOqladFK16KRqEX7JIiBvqHkCyBtqJiCTmhsgk5oJyKTmCSCTmgnIpOYGyKRm00nVopOqRSdViz75ZYD8JCCTmhsgk5pNQCY1E5Df7KRq0UnVopOqRZ8sU3MDZFIzAZnUPAFkUjMBuQEyqfnN1NwA+UknVYtOqhadVC365CUgk5o31ExAJjWb1HwnNTdANgG5UfOdTqoWnVQtOqlahF/yjYBMaiYgk5q/BMiNmgnIJjU3QCY13+mkatFJ1aKTqkWfLANyA2RSMwG5UTMBuVHzBJBJzY2aCchPAvKbnFQtOqladFK1CL/kDwMyqbkB8oaaCcgmNU8A2aTmjZOqRSdVi06qFn3yEpCfpOYGyBNqJiCTmifUTEDeADKpeULNBGRSs+mkatFJ1aKTqkWfLFOzCcgTaiYgk5oJyKTmBsik5jupeULNv3RSteikatFJ1aJPvhmQJ9Q8oWYCcgNkUnMD5Akgk5obIBOQTUB+0knVopOqRSdViz7544BMaiYgk5pNQG6ATGomNROQSc0E5AbIpOYGyKTmjZOqRSdVi06qFn3yPwNkUvOGmjeATEA2qZmA/EsnVYtOqhadVC365Jup+U5qJiATkEnNBGRSs0nNBORGzXcCMqnZdFK16KRq0UnVok+WAflJQCY1E5AJyKTmBsiNmhsgk5oJyBNqJiCTmn/ppGrRSdWik6pF+CVVS06qFp1ULTqpWnRSteikatFJ1aKTqkUnVYtOqhadVC06qVp0UrXopGrRSdWik6pF/wH1XSg7DwkUJgAAAABJRU5ErkJggg==" download="QR-ukgtoAk.png">↓</a>
+        </p>
+        <div class="chart-container" >
+          <canvas id="chart-ukgtoAk1"></canvas>
+        </div>
+      </div>
+    </div>
+    <div class="links-container">
+  <div class="links-box" id="row-ukgtoAk2">
+    <p>Link: <a href="http://localhost:3030/short/ukgtoAk" target="_blank">ukgtoAk</a></p>
+    <p>Code: POOOO</p>
+    <p>Expire: 6/10/2025, 9:47:00 PM</p>
+    <p class="click-count">Clicks: 0</p>
+    <p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJQAAACUCAYAAAB1PADUAAAAAklEQVR4AewaftIAAAS7SURBVO3BQU4tSRAEwfDSu/+VfVjmqqRWJ3wYhRl+SdWSk6pFJ1WLTqoWnVQtOqladFK16KRq0UnVopOqRSdVi06qFp1ULTqpWnRSteikatEnLwH5SWomIDdqboBMam6A3Ki5AXKjZgLyk9S8cVK16KRq0UnVok+WqdkE5Ak1N0CeAHKj5gk1b6jZBGTTSdWik6pFJ1WLPvlmQJ5Q84SaCcik5kbNBGQTkEnNBGRS8wSQJ9R8p5OqRSdVi06qFn3yxwG5ATKpuVHzBpBJzQRkUvN/clK16KRq0UnVok/+ODU3QG6A3Kh5Qs0TQCY1f9lJ1aKTqkUnVYs++WZq/iU1N2pugExqNql5Q81vclK16KRq0UnVok+WAflJQCY1E5BJzQRkUvMEkEnNBGRSMwGZ1NwA+c1OqhadVC06qVr0yUtqfhMgk5oJyKRmAnIDZFIzAZnUvKHmLzmpWnRSteikahF+yQtAJjUTkBs1E5An1ExA/jI1E5BJzQ2QSc0E5EbNGydVi06qFp1ULfpkGZBJzQ2QSc0TQDapeQLIG2omIDdAbtTcqJmAbDqpWnRSteikatEnL6nZBOQJNd8JyKTmRs0EZFJzo2YCcqPmBsiNmk0nVYtOqhadVC365CUgk5oJyKRmUvMEkBsgk5ongPwlQG7U3ACZ1LxxUrXopGrRSdUi/JIXgNyouQEyqZmA3Kh5AsiNmhsgk5oJyKTmBsik5g0gN2q+00nVopOqRSdVi/BLXgDyhpoJyKTmBsh3UnMDZJOaCcik5g0gN2reOKladFK16KRq0ScvqbkBMql5Asik5kbNJiCTmknNBGRSMwGZ1ExAJjUTkEnNBORfOqladFK16KRqEX7JIiBvqHkCyBtqJiCTmhsgk5oJyKTmCSCTmgnIpOYGyKRm00nVopOqRSdViz75ZYD8JCCTmhsgk5pNQCY1E5Df7KRq0UnVopOqRZ8sU3MDZFIzAZnUPAFkUjMBuQEyqfnN1NwA+UknVYtOqhadVC365CUgk5o31ExAJjWb1HwnNTdANgG5UfOdTqoWnVQtOqlahF/yjYBMaiYgk5q/BMiNmgnIJjU3QCY13+mkatFJ1aKTqkWfLANyA2RSMwG5UTMBuVHzBJBJzY2aCchPAvKbnFQtOqladFK1CL/kDwMyqbkB8oaaCcgmNU8A2aTmjZOqRSdVi06qFn3yEpCfpOYGyBNqJiCTmifUTEDeADKpeULNBGRSs+mkatFJ1aKTqkWfLFOzCcgTaiYgk5oJyKTmBsik5jupeULNv3RSteikatFJ1aJPvhmQJ9Q8oWYCcgNkUnMD5Akgk5obIBOQTUB+0knVopOqRSdViz7544BMaiYgk5pNQG6ATGomNROQSc0E5AbIpOYGyKTmjZOqRSdVi06qFn3yPwNkUvOGmjeATEA2qZmA/EsnVYtOqhadVC365Jup+U5qJiATkEnNBGRSs0nNBORGzXcCMqnZdFK16KRq0UnVok+WAflJQCY1E5AJyKTmBsiNmhsgk5oJyBNqJiCTmn/ppGrRSdWik6pF+CVVS06qFp1ULTqpWnRSteikatFJ1aKTqkUnVYtOqhadVC06qVp0UrXopGrRSdWik6pF/wH1XSg7DwkUJgAAAABJRU5ErkJggg==" alt="QR ukgtoAk" width="80">
+      <a href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJQAAACUCAYAAAB1PADUAAAAAklEQVR4AewaftIAAAS7SURBVO3BQU4tSRAEwfDSu/+VfVjmqqRWJ3wYhRl+SdWSk6pFJ1WLTqoWnVQtOqladFK16KRq0UnVopOqRSdVi06qFp1ULTqpWnRSteikatEnLwH5SWomIDdqboBMam6A3Ki5AXKjZgLyk9S8cVK16KRq0UnVok+WqdkE5Ak1N0CeAHKj5gk1b6jZBGTTSdWik6pFJ1WLPvlmQJ5Q84SaCcik5kbNBGQTkEnNBGRS8wSQJ9R8p5OqRSdVi06qFn3yxwG5ATKpuVHzBpBJzQRkUvN/clK16KRq0UnVok/+ODU3QG6A3Kh5Qs0TQCY1f9lJ1aKTqkUnVYs++WZq/iU1N2pugExqNql5Q81vclK16KRq0UnVok+WAflJQCY1E5BJzQRkUvMEkEnNBGRSMwGZ1NwA+c1OqhadVC06qVr0yUtqfhMgk5oJyKRmAnIDZFIzAZnUvKHmLzmpWnRSteikahF+yQtAJjUTkBs1E5An1ExA/jI1E5BJzQ2QSc0E5EbNGydVi06qFp1ULfpkGZBJzQ2QSc0TQDapeQLIG2omIDdAbtTcqJmAbDqpWnRSteikatEnL6nZBOQJNd8JyKTmRs0EZFJzo2YCcqPmBsiNmk0nVYtOqhadVC365CUgk5oJyKRmUvMEkBsgk5ongPwlQG7U3ACZ1LxxUrXopGrRSdUi/JIXgNyouQEyqZmA3Kh5AsiNmhsgk5oJyKTmBsik5g0gN2q+00nVopOqRSdVi/BLXgDyhpoJyKTmBsh3UnMDZJOaCcik5g0gN2reOKladFK16KRq0ScvqbkBMql5Asik5kbNJiCTmknNBGRSMwGZ1ExAJjUTkEnNBORfOqladFK16KRqEX7JIiBvqHkCyBtqJiCTmhsgk5oJyKTmCSCTmgnIpOYGyKRm00nVopOqRSdViz75ZYD8JCCTmhsgk5pNQCY1E5Df7KRq0UnVopOqRZ8sU3MDZFIzAZnUPAFkUjMBuQEyqfnN1NwA+UknVYtOqhadVC365CUgk5o31ExAJjWb1HwnNTdANgG5UfOdTqoWnVQtOqlahF/yjYBMaiYgk5q/BMiNmgnIJjU3QCY13+mkatFJ1aKTqkWfLANyA2RSMwG5UTMBuVHzBJBJzY2aCchPAvKbnFQtOqladFK1CL/kDwMyqbkB8oaaCcgmNU8A2aTmjZOqRSdVi06qFn3yEpCfpOYGyBNqJiCTmifUTEDeADKpeULNBGRSs+mkatFJ1aKTqkWfLFOzCcgTaiYgk5oJyKTmBsik5jupeULNv3RSteikatFJ1aJPvhmQJ9Q8oWYCcgNkUnMD5Akgk5obIBOQTUB+0knVopOqRSdViz7544BMaiYgk5pNQG6ATGomNROQSc0E5AbIpOYGyKTmjZOqRSdVi06qFn3yPwNkUvOGmjeATEA2qZmA/EsnVYtOqhadVC365Jup+U5qJiATkEnNBGRSs0nNBORGzXcCMqnZdFK16KRq0UnVok+WAflJQCY1E5AJyKTmBsiNmhsgk5oJyBNqJiCTmn/ppGrRSdWik6pF+CVVS06qFp1ULTqpWnRSteikatFJ1aKTqkUnVYtOqhadVC06qVp0UrXopGrRSdWik6pF/wH1XSg7DwkUJgAAAABJRU5ErkJggg==" download="QR-ukgtoAk.png">↓</a>
+    </p>
+    <div class="chart-container">
+      <canvas id="chart-ukgtoAk2"></canvas>
+    </div>
+  </div>
+    </div>
+    <div class="links-container">
+  <div class="links-box" id="row-ukgtoAk3">
+    <p>Link: <a href="http://localhost:3030/short/ukgtoAk" target="_blank">ukgtoAk</a></p>
+    <p>Code: POOOO</p>
+    <p>Expire: 6/10/2025, 9:47:00 PM</p>
+    <p class="click-count">Clicks: 0</p>
+    <p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJQAAACUCAYAAAB1PADUAAAAAklEQVR4AewaftIAAAS7SURBVO3BQU4tSRAEwfDSu/+VfVjmqqRWJ3wYhRl+SdWSk6pFJ1WLTqoWnVQtOqladFK16KRq0UnVopOqRSdVi06qFp1ULTqpWnRSteikatEnLwH5SWomIDdqboBMam6A3Ki5AXKjZgLyk9S8cVK16KRq0UnVok+WqdkE5Ak1N0CeAHKj5gk1b6jZBGTTSdWik6pFJ1WLPvlmQJ5Q84SaCcik5kbNBGQTkEnNBGRS8wSQJ9R8p5OqRSdVi06qFn3yxwG5ATKpuVHzBpBJzQRkUvN/clK16KRq0UnVok/+ODU3QG6A3Kh5Qs0TQCY1f9lJ1aKTqkUnVYs++WZq/iU1N2pugExqNql5Q81vclK16KRq0UnVok+WAflJQCY1E5BJzQRkUvMEkEnNBGRSMwGZ1NwA+c1OqhadVC06qVr0yUtqfhMgk5oJyKRmAnIDZFIzAZnUvKHmLzmpWnRSteikahF+yQtAJjUTkBs1E5An1ExA/jI1E5BJzQ2QSc0E5EbNGydVi06qFp1ULfpkGZBJzQ2QSc0TQDapeQLIG2omIDdAbtTcqJmAbDqpWnRSteikatEnL6nZBOQJNd8JyKTmRs0EZFJzo2YCcqPmBsiNmk0nVYtOqhadVC365CUgk5oJyKRmUvMEkBsgk5ongPwlQG7U3ACZ1LxxUrXopGrRSdUi/JIXgNyouQEyqZmA3Kh5AsiNmhsgk5oJyKTmBsik5g0gN2q+00nVopOqRSdVi/BLXgDyhpoJyKTmBsh3UnMDZJOaCcik5g0gN2reOKladFK16KRq0ScvqbkBMql5Asik5kbNJiCTmknNBGRSMwGZ1ExAJjUTkEnNBORfOqladFK16KRqEX7JIiBvqHkCyBtqJiCTmhsgk5oJyKTmCSCTmgnIpOYGyKRm00nVopOqRSdViz75ZYD8JCCTmhsgk5pNQCY1E5Df7KRq0UnVopOqRZ8sU3MDZFIzAZnUPAFkUjMBuQEyqfnN1NwA+UknVYtOqhadVC365CUgk5o31ExAJjWb1HwnNTdANgG5UfOdTqoWnVQtOqlahF/yjYBMaiYgk5q/BMiNmgnIJjU3QCY13+mkatFJ1aKTqkWfLANyA2RSMwG5UTMBuVHzBJBJzY2aCchPAvKbnFQtOqladFK1CL/kDwMyqbkB8oaaCcgmNU8A2aTmjZOqRSdVi06qFn3yEpCfpOYGyBNqJiCTmifUTEDeADKpeULNBGRSs+mkatFJ1aKTqkWfLFOzCcgTaiYgk5oJyKTmBsik5jupeULNv3RSteikatFJ1aJPvhmQJ9Q8oWYCcgNkUnMD5Akgk5obIBOQTUB+0knVopOqRSdViz7544BMaiYgk5pNQG6ATGomNROQSc0E5AbIpOYGyKTmjZOqRSdVi06qFn3yPwNkUvOGmjeATEA2qZmA/EsnVYtOqhadVC365Jup+U5qJiATkEnNBGRSs0nNBORGzXcCMqnZdFK16KRq0UnVok+WAflJQCY1E5AJyKTmBsiNmhsgk5oJyBNqJiCTmn/ppGrRSdWik6pF+CVVS06qFp1ULTqpWnRSteikatFJ1aKTqkUnVYtOqhadVC06qVp0UrXopGrRSdWik6pF/wH1XSg7DwkUJgAAAABJRU5ErkJggg==" alt="QR ukgtoAk" width="80">
+      <a href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJQAAACUCAYAAAB1PADUAAAAAklEQVR4AewaftIAAAS7SURBVO3BQU4tSRAEwfDSu/+VfVjmqqRWJ3wYhRl+SdWSk6pFJ1WLTqoWnVQtOqladFK16KRq0UnVopOqRSdVi06qFp1ULTqpWnRSteikatEnLwH5SWomIDdqboBMam6A3Ki5AXKjZgLyk9S8cVK16KRq0UnVok+WqdkE5Ak1N0CeAHKj5gk1b6jZBGTTSdWik6pFJ1WLPvlmQJ5Q84SaCcik5kbNBGQTkEnNBGRS8wSQJ9R8p5OqRSdVi06qFn3yxwG5ATKpuVHzBpBJzQRkUvN/clK16KRq0UnVok/+ODU3QG6A3Kh5Qs0TQCY1f9lJ1aKTqkUnVYs++WZq/iU1N2pugExqNql5Q81vclK16KRq0UnVok+WAflJQCY1E5BJzQRkUvMEkEnNBGRSMwGZ1NwA+c1OqhadVC06qVr0yUtqfhMgk5oJyKRmAnIDZFIzAZnUvKHmLzmpWnRSteikahF+yQtAJjUTkBs1E5An1ExA/jI1E5BJzQ2QSc0E5EbNGydVi06qFp1ULfpkGZBJzQ2QSc0TQDapeQLIG2omIDdAbtTcqJmAbDqpWnRSteikatEnL6nZBOQJNd8JyKTmRs0EZFJzo2YCcqPmBsiNmk0nVYtOqhadVC365CUgk5oJyKRmUvMEkBsgk5ongPwlQG7U3ACZ1LxxUrXopGrRSdUi/JIXgNyouQEyqZmA3Kh5AsiNmhsgk5oJyKTmBsik5g0gN2q+00nVopOqRSdVi/BLXgDyhpoJyKTmBsh3UnMDZJOaCcik5g0gN2reOKladFK16KRq0ScvqbkBMql5Asik5kbNJiCTmknNBGRSMwGZ1ExAJjUTkEnNBORfOqladFK16KRqEX7JIiBvqHkCyBtqJiCTmhsgk5oJyKTmCSCTmgnIpOYGyKRm00nVopOqRSdViz75ZYD8JCCTmhsgk5pNQCY1E5Df7KRq0UnVopOqRZ8sU3MDZFIzAZnUPAFkUjMBuQEyqfnN1NwA+UknVYtOqhadVC365CUgk5o31ExAJjWb1HwnNTdANgG5UfOdTqoWnVQtOqlahF/yjYBMaiYgk5q/BMiNmgnIJjU3QCY13+mkatFJ1aKTqkWfLANyA2RSMwG5UTMBuVHzBJBJzY2aCchPAvKbnFQtOqladFK1CL/kDwMyqbkB8oaaCcgmNU8A2aTmjZOqRSdVi06qFn3yEpCfpOYGyBNqJiCTmifUTEDeADKpeULNBGRSs+mkatFJ1aKTqkWfLFOzCcgTaiYgk5oJyKTmBsik5jupeULNv3RSteikatFJ1aJPvhmQJ9Q8oWYCcgNkUnMD5Akgk5obIBOQTUB+0knVopOqRSdViz7544BMaiYgk5pNQG6ATGomNROQSc0E5AbIpOYGyKTmjZOqRSdVi06qFn3yPwNkUvOGmjeATEA2qZmA/EsnVYtOqhadVC365Jup+U5qJiATkEnNBGRSs0nNBORGzXcCMqnZdFK16KRq0UnVok+WAflJQCY1E5AJyKTmBsiNmhsgk5oJyBNqJiCTmn/ppGrRSdWik6pF+CVVS06qFp1ULTqpWnRSteikatFJ1aKTqkUnVYtOqhadVC06qVp0UrXopGrRSdWik6pF/wH1XSg7DwkUJgAAAABJRU5ErkJggg==" download="QR-ukgtoAk.png">↓</a>
+    </p>
+    <div class="chart-container" >
+      <canvas id="chart-ukgtoAk3"></canvas>
+    </div>
+  </div>
+    </div>
+    <div class="links-container">
+  <div class="links-box" id="row-ukgtoAk">
+    <p>Link: <a href="http://localhost:3030/short/ukgtoAk" target="_blank">ukgtoAk</a></p>
+    <p>Code: POOOO</p>
+    <p>Expire: 6/10/2025, 9:47:00 PM</p>
+    <p class="click-count">Clicks: 0</p>
+    <p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJQAAACUCAYAAAB1PADUAAAAAklEQVR4AewaftIAAAS7SURBVO3BQU4tSRAEwfDSu/+VfVjmqqRWJ3wYhRl+SdWSk6pFJ1WLTqoWnVQtOqladFK16KRq0UnVopOqRSdVi06qFp1ULTqpWnRSteikatEnLwH5SWomIDdqboBMam6A3Ki5AXKjZgLyk9S8cVK16KRq0UnVok+WqdkE5Ak1N0CeAHKj5gk1b6jZBGTTSdWik6pFJ1WLPvlmQJ5Q84SaCcik5kbNBGQTkEnNBGRS8wSQJ9R8p5OqRSdVi06qFn3yxwG5ATKpuVHzBpBJzQRkUvN/clK16KRq0UnVok/+ODU3QG6A3Kh5Qs0TQCY1f9lJ1aKTqkUnVYs++WZq/iU1N2pugExqNql5Q81vclK16KRq0UnVok+WAflJQCY1E5BJzQRkUvMEkEnNBGRSMwGZ1NwA+c1OqhadVC06qVr0yUtqfhMgk5oJyKRmAnIDZFIzAZnUvKHmLzmpWnRSteikahF+yQtAJjUTkBs1E5An1ExA/jI1E5BJzQ2QSc0E5EbNGydVi06qFp1ULfpkGZBJzQ2QSc0TQDapeQLIG2omIDdAbtTcqJmAbDqpWnRSteikatEnL6nZBOQJNd8JyKTmRs0EZFJzo2YCcqPmBsiNmk0nVYtOqhadVC365CUgk5oJyKRmUvMEkBsgk5ongPwlQG7U3ACZ1LxxUrXopGrRSdUi/JIXgNyouQEyqZmA3Kh5AsiNmhsgk5oJyKTmBsik5g0gN2q+00nVopOqRSdVi/BLXgDyhpoJyKTmBsh3UnMDZJOaCcik5g0gN2reOKladFK16KRq0ScvqbkBMql5Asik5kbNJiCTmknNBGRSMwGZ1ExAJjUTkEnNBORfOqladFK16KRqEX7JIiBvqHkCyBtqJiCTmhsgk5oJyKTmCSCTmgnIpOYGyKRm00nVopOqRSdViz75ZYD8JCCTmhsgk5pNQCY1E5Df7KRq0UnVopOqRZ8sU3MDZFIzAZnUPAFkUjMBuQEyqfnN1NwA+UknVYtOqhadVC365CUgk5o31ExAJjWb1HwnNTdANgG5UfOdTqoWnVQtOqlahF/yjYBMaiYgk5q/BMiNmgnIJjU3QCY13+mkatFJ1aKTqkWfLANyA2RSMwG5UTMBuVHzBJBJzY2aCchPAvKbnFQtOqladFK1CL/kDwMyqbkB8oaaCcgmNU8A2aTmjZOqRSdVi06qFn3yEpCfpOYGyBNqJiCTmifUTEDeADKpeULNBGRSs+mkatFJ1aKTqkWfLFOzCcgTaiYgk5oJyKTmBsik5jupeULNv3RSteikatFJ1aJPvhmQJ9Q8oWYCcgNkUnMD5Akgk5obIBOQTUB+0knVopOqRSdViz7544BMaiYgk5pNQG6ATGomNROQSc0E5AbIpOYGyKTmjZOqRSdVi06qFn3yPwNkUvOGmjeATEA2qZmA/EsnVYtOqhadVC365Jup+U5qJiATkEnNBGRSs0nNBORGzXcCMqnZdFK16KRq0UnVok+WAflJQCY1E5AJyKTmBsiNmhsgk5oJyBNqJiCTmn/ppGrRSdWik6pF+CVVS06qFp1ULTqpWnRSteikatFJ1aKTqkUnVYtOqhadVC06qVp0UrXopGrRSdWik6pF/wH1XSg7DwkUJgAAAABJRU5ErkJggg==" alt="QR ukgtoAk" width="80">
+      <a href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJQAAACUCAYAAAB1PADUAAAAAklEQVR4AewaftIAAAS7SURBVO3BQU4tSRAEwfDSu/+VfVjmqqRWJ3wYhRl+SdWSk6pFJ1WLTqoWnVQtOqladFK16KRq0UnVopOqRSdVi06qFp1ULTqpWnRSteikatEnLwH5SWomIDdqboBMam6A3Ki5AXKjZgLyk9S8cVK16KRq0UnVok+WqdkE5Ak1N0CeAHKj5gk1b6jZBGTTSdWik6pFJ1WLPvlmQJ5Q84SaCcik5kbNBGQTkEnNBGRS8wSQJ9R8p5OqRSdVi06qFn3yxwG5ATKpuVHzBpBJzQRkUvN/clK16KRq0UnVok/+ODU3QG6A3Kh5Qs0TQCY1f9lJ1aKTqkUnVYs++WZq/iU1N2pugExqNql5Q81vclK16KRq0UnVok+WAflJQCY1E5BJzQRkUvMEkEnNBGRSMwGZ1NwA+c1OqhadVC06qVr0yUtqfhMgk5oJyKRmAnIDZFIzAZnUvKHmLzmpWnRSteikahF+yQtAJjUTkBs1E5An1ExA/jI1E5BJzQ2QSc0E5EbNGydVi06qFp1ULfpkGZBJzQ2QSc0TQDapeQLIG2omIDdAbtTcqJmAbDqpWnRSteikatEnL6nZBOQJNd8JyKTmRs0EZFJzo2YCcqPmBsiNmk0nVYtOqhadVC365CUgk5oJyKRmUvMEkBsgk5ongPwlQG7U3ACZ1LxxUrXopGrRSdUi/JIXgNyouQEyqZmA3Kh5AsiNmhsgk5oJyKTmBsik5g0gN2q+00nVopOqRSdVi/BLXgDyhpoJyKTmBsh3UnMDZJOaCcik5g0gN2reOKladFK16KRq0ScvqbkBMql5Asik5kbNJiCTmknNBGRSMwGZ1ExAJjUTkEnNBORfOqladFK16KRqEX7JIiBvqHkCyBtqJiCTmhsgk5oJyKTmCSCTmgnIpOYGyKRm00nVopOqRSdViz75ZYD8JCCTmhsgk5pNQCY1E5Df7KRq0UnVopOqRZ8sU3MDZFIzAZnUPAFkUjMBuQEyqfnN1NwA+UknVYtOqhadVC365CUgk5o31ExAJjWb1HwnNTdANgG5UfOdTqoWnVQtOqlahF/yjYBMaiYgk5q/BMiNmgnIJjU3QCY13+mkatFJ1aKTqkWfLANyA2RSMwG5UTMBuVHzBJBJzY2aCchPAvKbnFQtOqladFK1CL/kDwMyqbkB8oaaCcgmNU8A2aTmjZOqRSdVi06qFn3yEpCfpOYGyBNqJiCTmifUTEDeADKpeULNBGRSs+mkatFJ1aKTqkWfLFOzCcgTaiYgk5oJyKTmBsik5jupeULNv3RSteikatFJ1aJPvhmQJ9Q8oWYCcgNkUnMD5Akgk5obIBOQTUB+0knVopOqRSdViz7544BMaiYgk5pNQG6ATGomNROQSc0E5AbIpOYGyKTmjZOqRSdVi06qFn3yPwNkUvOGmjeATEA2qZmA/EsnVYtOqhadVC365Jup+U5qJiATkEnNBGRSs0nNBORGzXcCMqnZdFK16KRq0UnVok+WAflJQCY1E5AJyKTmBsiNmhsgk5oJyBNqJiCTmn/ppGrRSdWik6pF+CVVS06qFp1ULTqpWnRSteikatFJ1aKTqkUnVYtOqhadVC06qVp0UrXopGrRSdWik6pF/wH1XSg7DwkUJgAAAABJRU5ErkJggg==" download="QR-ukgtoAk.png">↓</a>
+    </p>
+    <div class="chart-container" >
+      <canvas id="chart-ukgtoAk" ></canvas>
+    </div>
+  </div>
+  </div>
+  </div>
+
+  <table>
+    <tr>
+      <th>Link</th><th>Code</th><th>Expire</th><th>Click</th><th>QR</th><th>Trend</th>
+    </tr>
+
+
+    <tr id="row-POOOO">
+      <td><a href="http://localhost:3030/short/POOOO" target="_blank">POOOO</a></td>
+      <td>POOOO</td>
+      <td>6/10/2025, 9:47:00 PM</td>
+      <td class="click-count">0</td>
+      <td>
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJQAAACUCAYAAAB1PADUAAAAAklEQVR4AewaftIAAAS+SURBVO3BQY4kRxIEQdNA/f/LunN0XgJIpFezOWsi+EeqlpxULTqpWnRSteikatFJ1aKTqkUnVYtOqhadVC06qVp0UrXopGrRSdWik6pFJ1WLPnkJyE9S8wSQSc0bQG7U3AC5UTMB+Ulq3jipWnRSteikatEny9RsAvJNQCY1N2pugNyomYA8oWYTkE0nVYtOqhadVC365MuAPKHmCSCTmknNjZobIJOaCcik5gbIJiBPqPmmk6pFJ1WLTqoWffKXA/KEmknNE0AmNTdq/iYnVYtOqhadVC36pP4ByBNqJiATkP8nJ1WLTqoWnVQt+uTL1Pyb1NwAeQPIpGYCMqnZpOY3OaladFK16KRq0SfLgPwmQCY1N2omIJOaCcgbQCY1N0B+s5OqRSdVi06qFn3ykprfBMikZgIyqZmATGomIJOaN9TcqPkvOaladFK16KRq0ScvAZnUTEA2qZnU3AC5ATKpmYA8AWRScwNkUjMB2aTmm06qFp1ULTqpWvTJl6mZgDyhZgIyqZmATGpugNyomYBMQG6A3KiZgLyh5gkgk5o3TqoWnVQtOqla9MkyIE+omYBMQG6APAHkDTU3QCY1N0CeUDMBeUPNppOqRSdVi06qFn2yTM0TQCY1TwC5AXKj5gbIpGYCMqm5ATKpmYBMaiYgk5ongExqNp1ULTqpWnRStQj/yAtAbtS8AWRSMwHZpOYNIJOaGyCTmjeA3Kj5ppOqRSdVi06qFuEf+UWATGomIG+omYC8oeYJIJOaCcgbaiYgk5oJyKTmjZOqRSdVi06qFn3yEpAbNROQSc2kZgIyqZmATGpugHwTkBs1N2omIN+kZtNJ1aKTqkUnVYs+WaZmAvIEkEnNE0AmNW+omYDcqJmAbFIzAblRMwGZ1Gw6qVp0UrXopGrRJ/8yIDdAnlAzAZnUTEAmNROQJ4BMam6ATGomNTdqboBMar7ppGrRSdWik6pFn/wwNROQGzUTkEnNjZobNTdqJiATkEnNDZBJzQ2QbwIyqXnjpGrRSdWik6pFn/wyaiYgN0A2qfkmNROQGzUTkEnNBOQJNZtOqhadVC06qVr0yZepmYBMam7UTEAmNd8E5EbNDZAbNTdAJjUTkEnNDZBJzaaTqkUnVYtOqhZ98mVAJjUTkG8C8oSaSc0EZALyhJoJyBNAngByA2RS88ZJ1aKTqkUnVYvwj/yHAblRcwPkDTU3QJ5Q8wSQTWreOKladFK16KRq0ScvAflJaiY1TwD5LwEyqXlDzTedVC06qVp0UrXok2VqNgG5AXKj5g01m9RMQG7UvKHmBsik5o2TqkUnVYtOqhZ98mVAnlCzCcgTaiYgk5obIG8AeUPNBOQnnVQtOqladFK16JO/nJoJyKTmRs0EZFIzqXlDzRtAbtR800nVopOqRSdViz75y6j5JjU3QCY1bwB5Qs0NkEnNppOqRSdVi06qFn3yZWq+Sc0Tat4AMql5AsgTaiYgk5oJyKTmJ51ULTqpWnRSteiTZUB+EpBJzRtAbtQ8AWRScwNkUvOEmgnIpOabTqoWnVQtOqlahH+kaslJ1aKTqkUnVYtOqhadVC06qVp0UrXopGrRSdWik6pFJ1WLTqoWnVQtOqladFK16H/uHSg7BcXtegAAAABJRU5ErkJggg==" alt="QR POOOO" width="80">
+        <a href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJQAAACUCAYAAAB1PADUAAAAAklEQVR4AewaftIAAAS+SURBVO3BQY4kRxIEQdNA/f/LunN0XgJIpFezOWsi+EeqlpxULTqpWnRSteikatFJ1aKTqkUnVYtOqhadVC06qVp0UrXopGrRSdWik6pFJ1WLPnkJyE9S8wSQSc0bQG7U3AC5UTMB+Ulq3jipWnRSteikatEny9RsAvJNQCY1N2pugNyomYA8oWYTkE0nVYtOqhadVC365MuAPKHmCSCTmknNjZobIJOaCcik5gbIJiBPqPmmk6pFJ1WLTqoWffKXA/KEmknNE0AmNTdq/iYnVYtOqhadVC36pP4ByBNqJiATkP8nJ1WLTqoWnVQt+uTL1Pyb1NwAeQPIpGYCMqnZpOY3OaladFK16KRq0SfLgPwmQCY1N2omIJOaCcgbQCY1N0B+s5OqRSdVi06qFn3ykprfBMikZgIyqZmATGomIJOaN9TcqPkvOaladFK16KRq0ScvAZnUTEA2qZnU3AC5ATKpmYA8AWRScwNkUjMB2aTmm06qFp1ULTqpWvTJl6mZgDyhZgIyqZmATGpugNyomYBMQG6A3KiZgLyh5gkgk5o3TqoWnVQtOqla9MkyIE+omYBMQG6APAHkDTU3QCY1N0CeUDMBeUPNppOqRSdVi06qFn2yTM0TQCY1TwC5AXKj5gbIpGYCMqm5ATKpmYBMaiYgk5ongExqNp1ULTqpWnRStQj/yAtAbtS8AWRSMwHZpOYNIJOaGyCTmjeA3Kj5ppOqRSdVi06qFuEf+UWATGomIG+omYC8oeYJIJOaCcgbaiYgk5oJyKTmjZOqRSdVi06qFn3yEpAbNROQSc2kZgIyqZmATGpugHwTkBs1N2omIN+kZtNJ1aKTqkUnVYs+WaZmAvIEkEnNE0AmNW+omYDcqJmAbFIzAblRMwGZ1Gw6qVp0UrXopGrRJ/8yIDdAnlAzAZnUTEAmNROQJ4BMam6ATGomNTdqboBMar7ppGrRSdWik6pFn/wwNROQGzUTkEnNjZobNTdqJiATkEnNDZBJzQ2QbwIyqXnjpGrRSdWik6pFn/wyaiYgN0A2qfkmNROQGzUTkEnNBOQJNZtOqhadVC06qVr0yZepmYBMam7UTEAmNd8E5EbNDZAbNTdAJjUTkEnNDZBJzaaTqkUnVYtOqhZ98mVAJjUTkG8C8oSaSc0EZALyhJoJyBNAngByA2RS88ZJ1aKTqkUnVYvwj/yHAblRcwPkDTU3QJ5Q8wSQTWreOKladFK16KRq0ScvAflJaiY1TwD5LwEyqXlDzTedVC06qVp0UrXok2VqNgG5AXKj5g01m9RMQG7UvKHmBsik5o2TqkUnVYtOqhZ98mVAnlCzCcgTaiYgk5obIG8AeUPNBOQnnVQtOqladFK16JO/nJoJyKTmRs0EZFIzqXlDzRtAbtR800nVopOqRSdViz75y6j5JjU3QCY1bwB5Qs0NkEnNppOqRSdVi06qFn3yZWq+Sc0Tat4AMql5AsgTaiYgk5oJyKTmJ51ULTqpWnRSteiTZUB+EpBJzRtAbtQ8AWRScwNkUvOEmgnIpOabTqoWnVQtOqlahH+kaslJ1aKTqkUnVYtOqhadVC06qVp0UrXopGrRSdWik6pFJ1WLTqoWnVQtOqladFK16H/uHSg7BcXtegAAAABJRU5ErkJggg==" download="QR-POOOO.png">↓</a>
+      </td>
+      <td>
+        <div class="chart-container" style="position: relative; height:40vh; width:80vw">
+          <canvas id="chart-POOOO" width="200" height="80"></canvas>
+        </div>
+
+      </td>
+    </tr>
+
+  </table>
+</section>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  // mantieni riferimenti ai chart
+  const charts = {}
+
+  {
+    // Calcola in client la data di partenza (mezzanotte)
+    const since = new Date();
+    since.setHours(0,0,0,0);
+    since.setDate(since.getDate() - 6);
+
+    const labels = [];
+    for (let i = 0; i < 7; i++) {
+      const d = new Date(since.getTime() + i * 864e5);
+      labels.push(d.toLocaleDateString());
+    }
+    const ctx = document.getElementById('chart-ukgtoAk').getContext('2d')
+    charts['ukgtoAk'] = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: labels,
+        datasets: [{ label: 'Clicks', data: [0,0,0,0,2,0,2], autoPadding: true, responsive: true, barPercentage: 0.5  }]
+      },
+      options: { animation: true, scales: { y: { beginAtZero: true } } }
+    })
+    const ctx2 = document.getElementById('chart-ukgtoAk1').getContext('2d')
+    charts['ukgtoAk1'] = new Chart(ctx2, {
+      type: 'bar',
+      data: {
+        labels: labels,
+        datasets: [{ label: 'Clicks', data: [0,0,0,0,2,0,2], autoPadding: true, responsive: true, barPercentage: 0.5  }]
+      },
+      options: { animation: true, scales: { y: { beginAtZero: true } } }
+    })
+    const ctx3 = document.getElementById('chart-ukgtoAk2').getContext('2d')
+    charts['ukgtoAk2'] = new Chart(ctx3, {
+      type: 'bar',
+      data: {
+        labels: labels,
+        datasets: [{ label: 'Clicks', data: [0,0,0,0,2,0,2], autoPadding: true, responsive: true, barPercentage: 0.5  }]
+      },
+      options: { animation: true, scales: { y: { beginAtZero: true } } }
+    })
+    const ctx4 = document.getElementById('chart-ukgtoAk3').getContext('2d')
+    charts['ukgtoAk3'] = new Chart(ctx4, {
+      type: 'bar',
+      data: {
+        labels: labels,
+        datasets: [{ label: 'Clicks', data: [0,0,0,0,2,0,2], autoPadding: true, responsive: true, barPercentage: 0.5  }]
+      },
+      options: { animation: true, scales: { y: { beginAtZero: true } } }
+    })
+  }
+
+  {
+    // Calcola in client la data di partenza (mezzanotte)
+    const since = new Date();
+    since.setHours(0,0,0,0);
+    since.setDate(since.getDate() - 6);
+
+    const labels = [];
+    for (let i = 0; i < 7; i++) {
+      const d = new Date(since.getTime() + i * 864e5);
+      labels.push(d.toLocaleDateString());
+    }
+    const ctx = document.getElementById('chart-POOOO').getContext('2d')
+    charts['POOOO'] = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: labels,
+        datasets: [{ label: 'Clicks', data: [10,9,40,20,2,10,0], autoPadding: true, responsive: true, barPercentage: 0.5 }]
+      },
+      options: { animation: true, scales: { y: { beginAtZero: true } } }
+    })
+  }
+</script>

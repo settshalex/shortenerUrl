@@ -1,0 +1,10 @@
+<% include layout.ejs %>
+<h1>Registrati</h1>
+<form action='/register' method='post'>
+
+    <input type='email' name='email' placeholder='Email' value='<%= typeof email !== 'undefined' ? email : '' %>' required>
+    <input type='password' name='password' placeholder='Password' required>
+    <input type='password' name='password2' placeholder='Conferma Password' required>
+    <button type='submit'>Registrati</button>
+</form>
+<p>Hai già un account? <a href='/login'>Accedi</a></p>

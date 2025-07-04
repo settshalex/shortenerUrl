@@ -1,0 +1,31 @@
+services:
+  app:
+    build: .
+    ports:
+      - '3030:3030'
+    environment:
+      - SESSION_SECRET=|0v~Wmb'W7)e_6x:58OH>,G2u%M??
+      - BASE_URL=http://localhost:3030
+      - DEV=true
+    depends_on:
+      - db
+  db:
+    container_name: postgres
+    image: postgres
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: pass
+      POSTGRES_DB: shortenerurl
+    volumes:
+      - db:/var/lib/postgresql/data
+    ports:
+      - "5332:5432"
+    restart: unless-stopped
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U user -d shortenerurl" ]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+volumes:
+    db:

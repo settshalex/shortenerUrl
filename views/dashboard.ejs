@@ -1,0 +1,93 @@
+<% include layout.ejs %>
+<section class="hero">
+    <div class="container">
+        <div class="card">
+            <h1>Shorten your link</h1>
+            <form  action="/shorten" method="post">
+                <div class="shorten-form">
+                <input type="url" name="originalUrl" placeholder="URL" required>
+                <button type="submit">Shorten</button>
+                </div>
+                <div class="extra-form">
+                    <input type="text" name="customCode" placeholder="Custom Code">
+                    <input type="datetime-local" name="expiresAt">
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+<section class="links">
+<h2>Your links</h2>
+<table>
+    <tr>
+        <th>Link</th><th>Code</th><th>Expire</th><th>Click</th><th>QR</th><th>Trend</th>
+    </tr>
+    <% urls.forEach(u => { %>
+        <tr id="row-<%= u.shortId %>">
+            <td><a href="<%= baseUrl %>/short/<%= u.shortId %>" target="_blank"><%= u.shortId %></a></td>
+            <td><%= u.customCode||'-' %></td>
+            <td><%= u.expiresAt? new Date(u.expiresAt).toLocaleString():'-' %></td>
+            <td class="click-count"><%= u.clicks %></td>
+            <td>
+                <img src="<%= u.qr %>" alt="QR <%= u.shortId %>" width="80">
+                <a href="<%= u.qr %>" download="QR-<%= u.shortId %>.png">↓</a>
+            </td>
+            <td>
+                <div class="chart-container" style="position: relative; height:40vh; width:80vw">
+                    <canvas id="chart-<%= u.shortId %>" width="200" height="80"></canvas>
+                </div>
+
+            </td>
+        </tr>
+    <% }) %>
+</table>
+</section>
+<script src="/socket.io/socket.io.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    const socketIo = io()
+    // entra nella "room" dell’utente
+    socketIo.on("connection", (socket) => {
+        socket.join("<%= user.id %>");
+        socketIo.to("some room").emit("some event");
+    });
+    // mantieni riferimenti ai chart
+    const charts = {}
+    <% urls.forEach(u => { %>
+    {
+        // Calcola in client la data di partenza (mezzanotte)
+        const since = new Date();
+        since.setHours(0,0,0,0);
+        since.setDate(since.getDate() - 6);
+
+        const labels = [];
+        for (let i = 0; i < 7; i++) {
+            const d = new Date(since.getTime() + i * 864e5);
+            labels.push(d.toLocaleDateString());
+        }
+        const ctx = document.getElementById('chart-<%= u.shortId %>').getContext('2d')
+        charts['<%= u.shortId %>'] = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [{ label: 'Clicks', data: [<%= u.daily.join(',') %>], autoPadding: true, responsive: true, barPercentage: 0.5  }]
+            },
+            options: { animation: true, scales: { y: { beginAtZero: true } } }
+        })
+    }
+    <% }) %>
+
+    // all’arrivo di un nuovo click
+    socketIo.on('linkClick', data => {
+        // aggiorna il count nella tabella
+        const row = document.getElementById('row-' + data.shortId)
+        const cell = row.querySelector('.click-count')
+        cell.textContent = data.clicks
+
+        // aggiorna il chart
+        const chart = charts[data.shortId]
+        const todayIdx = chart.data.labels.length - 1
+        chart.data.datasets[0].data[todayIdx] += 1
+        chart.update()
+    })
+</script>
