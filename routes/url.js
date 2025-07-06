@@ -3,6 +3,7 @@ const nanoid = require('nanoid')
 const Url = require('../models/Url')
 const Click = require('../models/Click')
 const User = require('../models/User')
+const { getDailyClicks } = require('../services/analytics')
 const QRCode = require('qrcode')
 const router = express.Router()
 // Middleware to check auth
@@ -65,27 +66,8 @@ router.get('/', ensureAuthenticated, async (req, res) => {
         const shortLink = `${baseUrl}/short/${url.shortId}`
         const qr = await QRCode.toDataURL(shortLink)
 
-        // daily clicks (ultimi 7 giorni)
-        // Calcola la data di partenza: mezzanotte di 6 giorni fa
-        const since = new Date();
-        since.setHours(0, 0, 0, 0);
-        since.setDate(since.getDate() - 6);
-
-        const days = Array(7).fill(0);
-
-        url.Clicks.forEach(({ at }) => {
-            // Normalizza il click alla mezzanotte del suo giorno
-            const clickDate = new Date(at);
-            clickDate.setHours(0, 0, 0, 0);
-
-            const diffMs = clickDate - since;
-            const idx = Math.floor(diffMs / (1000 * 60 * 60 * 24));
-
-            if (idx >= 0 && idx < 7) {
-                days[idx]++;
-            }
-        });
-
+        const rows = await getDailyClicks(url.id)
+        const daily = rows.map(r => r.clicks)
         return {
             id: url._id,
             shortId: url.shortId,
@@ -94,7 +76,7 @@ router.get('/', ensureAuthenticated, async (req, res) => {
             expiresAt: url.expiresAt,
             clicks: url.clicks,
             qr,
-            daily: days
+            daily: daily
         }
     }))
     const error = req.query.error

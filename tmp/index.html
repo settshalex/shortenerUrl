@@ -148,11 +148,12 @@
 
   .flex-container{
     display: flex;
+    flex-wrap: wrap;
     flex-direction: row;
   }
   .links-container{
     padding: 30px;
-    width: 50%;
+    flex: 30%;
     box-sizing: border-box;
     text-align: center;
   }
@@ -168,7 +169,7 @@
   }
   @media (max-width: 800px) {
     .flex-container {
-      flex-direction: column;
+      flex: 100%;
     }
   }
 </style>
@@ -268,31 +269,6 @@
   </div>
   </div>
   </div>
-
-  <table>
-    <tr>
-      <th>Link</th><th>Code</th><th>Expire</th><th>Click</th><th>QR</th><th>Trend</th>
-    </tr>
-
-
-    <tr id="row-POOOO">
-      <td><a href="http://localhost:3030/short/POOOO" target="_blank">POOOO</a></td>
-      <td>POOOO</td>
-      <td>6/10/2025, 9:47:00 PM</td>
-      <td class="click-count">0</td>
-      <td>
-        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJQAAACUCAYAAAB1PADUAAAAAklEQVR4AewaftIAAAS+SURBVO3BQY4kRxIEQdNA/f/LunN0XgJIpFezOWsi+EeqlpxULTqpWnRSteikatFJ1aKTqkUnVYtOqhadVC06qVp0UrXopGrRSdWik6pFJ1WLPnkJyE9S8wSQSc0bQG7U3AC5UTMB+Ulq3jipWnRSteikatEny9RsAvJNQCY1N2pugNyomYA8oWYTkE0nVYtOqhadVC365MuAPKHmCSCTmknNjZobIJOaCcik5gbIJiBPqPmmk6pFJ1WLTqoWffKXA/KEmknNE0AmNTdq/iYnVYtOqhadVC36pP4ByBNqJiATkP8nJ1WLTqoWnVQt+uTL1Pyb1NwAeQPIpGYCMqnZpOY3OaladFK16KRq0SfLgPwmQCY1N2omIJOaCcgbQCY1N0B+s5OqRSdVi06qFn3ykprfBMikZgIyqZmATGomIJOaN9TcqPkvOaladFK16KRq0ScvAZnUTEA2qZnU3AC5ATKpmYA8AWRScwNkUjMB2aTmm06qFp1ULTqpWvTJl6mZgDyhZgIyqZmATGpugNyomYBMQG6A3KiZgLyh5gkgk5o3TqoWnVQtOqla9MkyIE+omYBMQG6APAHkDTU3QCY1N0CeUDMBeUPNppOqRSdVi06qFn2yTM0TQCY1TwC5AXKj5gbIpGYCMqm5ATKpmYBMaiYgk5ongExqNp1ULTqpWnRStQj/yAtAbtS8AWRSMwHZpOYNIJOaGyCTmjeA3Kj5ppOqRSdVi06qFuEf+UWATGomIG+omYC8oeYJIJOaCcgbaiYgk5oJyKTmjZOqRSdVi06qFn3yEpAbNROQSc2kZgIyqZmATGpugHwTkBs1N2omIN+kZtNJ1aKTqkUnVYs+WaZmAvIEkEnNE0AmNW+omYDcqJmAbFIzAblRMwGZ1Gw6qVp0UrXopGrRJ/8yIDdAnlAzAZnUTEAmNROQJ4BMam6ATGomNTdqboBMar7ppGrRSdWik6pFn/wwNROQGzUTkEnNjZobNTdqJiATkEnNDZBJzQ2QbwIyqXnjpGrRSdWik6pFn/wyaiYgN0A2qfkmNROQGzUTkEnNBOQJNZtOqhadVC06qVr0yZepmYBMam7UTEAmNd8E5EbNDZAbNTdAJjUTkEnNDZBJzaaTqkUnVYtOqhZ98mVAJjUTkG8C8oSaSc0EZALyhJoJyBNAngByA2RS88ZJ1aKTqkUnVYvwj/yHAblRcwPkDTU3QJ5Q8wSQTWreOKladFK16KRq0ScvAflJaiY1TwD5LwEyqXlDzTedVC06qVp0UrXok2VqNgG5AXKj5g01m9RMQG7UvKHmBsik5o2TqkUnVYtOqhZ98mVAnlCzCcgTaiYgk5obIG8AeUPNBOQnnVQtOqladFK16JO/nJoJyKTmRs0EZFIzqXlDzRtAbtR800nVopOqRSdViz75y6j5JjU3QCY1bwB5Qs0NkEnNppOqRSdVi06qFn3yZWq+Sc0Tat4AMql5AsgTaiYgk5oJyKTmJ51ULTqpWnRSteiTZUB+EpBJzRtAbtQ8AWRScwNkUvOEmgnIpOabTqoWnVQtOqlahH+kaslJ1aKTqkUnVYtOqhadVC06qVp0UrXopGrRSdWik6pFJ1WLTqoWnVQtOqladFK16H/uHSg7BcXtegAAAABJRU5ErkJggg==" alt="QR POOOO" width="80">
-        <a href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJQAAACUCAYAAAB1PADUAAAAAklEQVR4AewaftIAAAS+SURBVO3BQY4kRxIEQdNA/f/LunN0XgJIpFezOWsi+EeqlpxULTqpWnRSteikatFJ1aKTqkUnVYtOqhadVC06qVp0UrXopGrRSdWik6pFJ1WLPnkJyE9S8wSQSc0bQG7U3AC5UTMB+Ulq3jipWnRSteikatEny9RsAvJNQCY1N2pugNyomYA8oWYTkE0nVYtOqhadVC365MuAPKHmCSCTmknNjZobIJOaCcik5gbIJiBPqPmmk6pFJ1WLTqoWffKXA/KEmknNE0AmNTdq/iYnVYtOqhadVC36pP4ByBNqJiATkP8nJ1WLTqoWnVQt+uTL1Pyb1NwAeQPIpGYCMqnZpOY3OaladFK16KRq0SfLgPwmQCY1N2omIJOaCcgbQCY1N0B+s5OqRSdVi06qFn3ykprfBMikZgIyqZmATGomIJOaN9TcqPkvOaladFK16KRq0ScvAZnUTEA2qZnU3AC5ATKpmYA8AWRScwNkUjMB2aTmm06qFp1ULTqpWvTJl6mZgDyhZgIyqZmATGpugNyomYBMQG6A3KiZgLyh5gkgk5o3TqoWnVQtOqla9MkyIE+omYBMQG6APAHkDTU3QCY1N0CeUDMBeUPNppOqRSdVi06qFn2yTM0TQCY1TwC5AXKj5gbIpGYCMqm5ATKpmYBMaiYgk5ongExqNp1ULTqpWnRStQj/yAtAbtS8AWRSMwHZpOYNIJOaGyCTmjeA3Kj5ppOqRSdVi06qFuEf+UWATGomIG+omYC8oeYJIJOaCcgbaiYgk5oJyKTmjZOqRSdVi06qFn3yEpAbNROQSc2kZgIyqZmATGpugHwTkBs1N2omIN+kZtNJ1aKTqkUnVYs+WaZmAvIEkEnNE0AmNW+omYDcqJmAbFIzAblRMwGZ1Gw6qVp0UrXopGrRJ/8yIDdAnlAzAZnUTEAmNROQJ4BMam6ATGomNTdqboBMar7ppGrRSdWik6pFn/wwNROQGzUTkEnNjZobNTdqJiATkEnNDZBJzQ2QbwIyqXnjpGrRSdWik6pFn/wyaiYgN0A2qfkmNROQGzUTkEnNBOQJNZtOqhadVC06qVr0yZepmYBMam7UTEAmNd8E5EbNDZAbNTdAJjUTkEnNDZBJzaaTqkUnVYtOqhZ98mVAJjUTkG8C8oSaSc0EZALyhJoJyBNAngByA2RS88ZJ1aKTqkUnVYvwj/yHAblRcwPkDTU3QJ5Q8wSQTWreOKladFK16KRq0ScvAflJaiY1TwD5LwEyqXlDzTedVC06qVp0UrXok2VqNgG5AXKj5g01m9RMQG7UvKHmBsik5o2TqkUnVYtOqhZ98mVAnlCzCcgTaiYgk5obIG8AeUPNBOQnnVQtOqladFK16JO/nJoJyKTmRs0EZFIzqXlDzRtAbtR800nVopOqRSdViz75y6j5JjU3QCY1bwB5Qs0NkEnNppOqRSdVi06qFn3yZWq+Sc0Tat4AMql5AsgTaiYgk5oJyKTmJ51ULTqpWnRSteiTZUB+EpBJzRtAbtQ8AWRScwNkUvOEmgnIpOabTqoWnVQtOqlahH+kaslJ1aKTqkUnVYtOqhadVC06qVp0UrXopGrRSdWik6pFJ1WLTqoWnVQtOqladFK16H/uHSg7BcXtegAAAABJRU5ErkJggg==" download="QR-POOOO.png">↓</a>
-      </td>
-      <td>
-        <div class="chart-container" style="position: relative; height:40vh; width:80vw">
-          <canvas id="chart-POOOO" width="200" height="80"></canvas>
-        </div>
-
-      </td>
-    </tr>
-
-  </table>
 </section>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
